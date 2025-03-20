@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base target="_top">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Quick Start - Leaflet</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .leaflet-container {
+            /* height: 400px;
+            width: 600px; */
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .leaflet-popup-content {
+            margin: 5px;
+        }
+        .leaflet-popup-content-wrapper {
+            opacity: 0.7;
+            color: red;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+
+
+    <div id="mapid" style="width: 100%; height: 100%;"></div>
+    <script>
+        // coordinates
+        var map = L.map('mapid').setView([54.973890428262365, -1.6131198598753542], 14);
+
+        // base layer map
+        const tiles = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        var Stadia_StamenTonerLabels = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_toner_labels/{z}/{x}/{y}{r}.{ext}', {
+            minZoom: 0,
+            maxZoom: 20,
+            attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            ext: 'png'
+        }).addTo(map);
+
+        var myIcon = L.icon({
+            iconUrl: 'icons/maps-and-flags.png',
+            iconSize: [38, 38],
+            iconAnchor: [19, 38], //it's important to place this within the icon pixels' x and y 
+            popupAnchor: [0, -36],
+        });
+        L.marker([54.973890428262365, -1.6131198598753542], { icon: myIcon }).addTo(map).bindPopup("hello");
+        // 
+
+
+    </script>
+
+
+
+</body>
+
+</html>
